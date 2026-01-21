@@ -53,6 +53,6 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbyiWjzuLhjdLbC6Odhps_
     });
 
     closeModalBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
+        modal.style.display = 'flex';
     });
 });
