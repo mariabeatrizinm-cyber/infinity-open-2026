@@ -15,7 +15,6 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Efeito de Névoa Vermelha */
 body::before {
     content: "";
     position: fixed;
@@ -37,7 +36,6 @@ section {
     box-sizing: border-box;
 }
 
-/* --- SESSÃO 1: LOGO --- */
 .hero-logo {
     text-align: center;
     width: 100%;
@@ -67,7 +65,6 @@ section {
     50% { opacity: 1; transform: scale(1.05); }
 }
 
-/* --- SESSÃO 2: CARDS (ALINHADOS) --- */
 .section-title {
     color: var(--st-red);
     text-transform: uppercase;
@@ -90,7 +87,7 @@ section {
 
 .card {
     background: var(--card-bg);
-    backdrop-filter: blur(10px); /* Efeito de vidro */
+    backdrop-filter: blur(10px); 
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius);
@@ -104,7 +101,6 @@ section {
     overflow: hidden;
 }
 
-/* Círculo de brilho sutil no fundo do card */
 .card::after {
     content: '';
     position: absolute;
@@ -131,23 +127,35 @@ section {
     opacity: 0.4;
 }
 
-/* Ícone/Badge */
 .card-icon {
     background: rgba(225, 26, 34, 0.1);
-    width: 60px;
-    height: 60px;
-    border-radius: 18px;
+    
+    
+    min-width: 60px;         
+    width: fit-content;       
+    height: auto;             
+    
+    padding: 20px 20px;       
+    border-radius: 12px;      
+    
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    
+    font-size: 14px;         
+    font-weight: 800;       
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
     margin-bottom: 25px;
     color: var(--st-red);
-    border: 1px solid rgba(225, 26, 34, 0.2);
+    border: 1px solid rgba(225, 26, 34, 0.3);
+    box-shadow: 0 0 15px rgba(225, 26, 34, 0.1);
+    
+    white-space: nowrap;      
 }
-
 .card h3 {
-    color: #fff; /* Título branco para contraste moderno */
+    color: #fff; 
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 15px;
@@ -162,7 +170,6 @@ section {
     margin: 0;
 }
 
-/* Animação para os cards */
 .card.hidden {
     opacity: 0;
     transform: translateY(30px);
@@ -172,20 +179,19 @@ section {
     opacity: 1;
     transform: translateY(0);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    transition-delay: var(--delay); /* Usaremos uma variável CSS para atrasos individuais */
+    transition-delay: var(--delay); 
 }
 
-/* --- SESSÃO 3: FORMULÁRIO --- */
 .form-box {
     width: 100%;
     max-width: 550px;
-    background: rgba(10, 10, 10, 0.8); /* Fundo semi-transparente */
-    backdrop-filter: blur(20px); /* Glassmorphism no formulário */
+    background: rgba(10, 10, 10, 0.8); 
+    backdrop-filter: blur(20px); 
     -webkit-backdrop-filter: blur(20px);
     padding: 50px;
     border: 1px solid #222;
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    border-radius: var(--radius); /* Arredondamento do formulário */
+    border-radius: var(--radius); 
 }
 
 .form-group { margin-bottom: 25px; }
@@ -208,7 +214,7 @@ input, select {
     color: #fff;
     box-sizing: border-box;
     transition: 0.3s;
-    border-radius: 12px; /* Arredondamento nos inputs */
+    border-radius: 12px; 
 }
 
 input:focus, select:focus {
@@ -229,7 +235,7 @@ button {
     letter-spacing: 2px;
     transition: 0.4s;
     margin-top: 10px;
-    border-radius: 12px; /* Arredondamento no botão */
+    border-radius: 12px; 
 }
 
 button:hover {
@@ -238,16 +244,13 @@ button:hover {
     box-shadow: 0 0 30px var(--st-red);
 }
 
-/* --- RESPONSIVIDADE (TABLETS E CELULARES) --- */
 
-/* Tablets: 2 colunas */
 @media (max-width: 1100px) {
     .cards-container {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Celulares: 1 coluna */
 @media (max-width: 768px) {
     .cards-container {
         grid-template-columns: 1fr;
@@ -258,7 +261,6 @@ button:hover {
     .card { min-height: auto; padding: 40px 20px; }
 }
 
-/* MODAL */
 #modal {
     display: none;
     position: fixed;
@@ -275,7 +277,7 @@ button:hover {
     padding: 40px;
     background: #000;
     max-width: 500px;
-    border-radius: var(--radius); /* Arredondamento do modal */
+    border-radius: var(--radius); 
 }
 .modal-content button {
     padding: 10px 30px;
