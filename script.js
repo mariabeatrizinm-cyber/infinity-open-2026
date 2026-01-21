@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
+
     const cards = document.querySelectorAll('.card');
 
     const observerOptions = {
         root: null, 
-        rootMargin: '0px',
         threshold: 0.2 
     };
 
@@ -17,9 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    cards.forEach(card => {
-        cardObserver.observe(card);
-    });
+    cards.forEach(card => cardObserver.observe(card));
+
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyiWjzuLhjdLbC6Odhps_oD3pYBfpnFV04coXF8iHGWT6elz8y9XcABfs_1vLk-eva2/exec'; 
     const form = document.getElementById('inscricaoForm');
@@ -30,8 +29,13 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', e => {
         e.preventDefault();
         
+
+        modal.style.display = 'flex'; 
+        
+
         btn.disabled = true;
-        btn.innerText = "CRUZANDO O PORTAL...";
+        btn.innerText = "ENVIANDO...";
+
 
         fetch(scriptURL, {
             method: 'POST',
@@ -39,19 +43,20 @@ document.addEventListener('DOMContentLoaded', function() {
             body: new FormData(form)
         })
         .then(() => {
-            modal.style.display = 'flex';
-            
+
             form.reset();
             btn.disabled = false;
             btn.innerText = "Entrar no Mundo Invertido";
         })
         .catch(error => {
-            console.error('Erro!', error);
-            alert('Erro na conexão. O portal está instável.');
+            console.error('Erro no envio:', error);
+
+            alert('Ocorreu um erro ao registrar. Tente novamente.');
+            modal.style.display = 'none';
             btn.disabled = false;
-            btn.innerText = "Entrar no Mundo Invertido";
         });
     });
+
 
     closeModalBtn.addEventListener('click', () => {
         modal.style.display = 'none';
