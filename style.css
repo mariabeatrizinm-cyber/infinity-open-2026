@@ -11,10 +11,13 @@ body {
     color: #fff;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
+    padding: 0;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    width: 100%;
 }
 
+/* Efeito de Névoa Vermelha */
 body::before {
     content: "";
     position: fixed;
@@ -36,6 +39,7 @@ section {
     box-sizing: border-box;
 }
 
+/* --- LOGO --- */
 .hero-logo {
     text-align: center;
     width: 100%;
@@ -68,16 +72,17 @@ section {
 .section-title {
     color: var(--st-red);
     text-transform: uppercase;
-    letter-spacing: 6px;
-    margin-bottom: 60px;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
     text-align: center;
     font-size: 2rem;
     text-shadow: 0 0 10px rgba(225, 26, 34, 0.5);
+    padding: 0 10px;
 }
 
+/* --- CARDS --- */
 .cards-container {
     display: grid;
-    /* No Desktop: 4 colunas iguais */
     grid-template-columns: repeat(4, 1fr);
     gap: 25px;
     max-width: 1300px;
@@ -101,59 +106,26 @@ section {
     overflow: hidden;
 }
 
-.card::after {
-    content: '';
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background: var(--st-red);
-    filter: blur(80px);
-    opacity: 0;
-    transition: 0.5s;
-    z-index: -1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.card:hover {
-    transform: translateY(-10px) scale(1.02);
-    border-color: var(--st-red);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px var(--st-glow);
-    background: rgba(255, 255, 255, 0.07);
-}
-
-.card:hover::after {
-    opacity: 0.4;
-}
-
 .card-icon {
     background: rgba(225, 26, 34, 0.1);
-    
-    
-    min-width: 60px;         
+    min-width: 80px;         
     width: fit-content;       
     height: auto;             
-    
-    padding: 20px 20px;       
+    padding: 10px 20px;       
     border-radius: 12px;      
-    
     display: flex;
     align-items: center;
     justify-content: center;
-    
     font-size: 14px;         
     font-weight: 800;       
     text-transform: uppercase;
     letter-spacing: 1px;
-    
     margin-bottom: 25px;
     color: var(--st-red);
     border: 1px solid rgba(225, 26, 34, 0.3);
-    box-shadow: 0 0 15px rgba(225, 26, 34, 0.1);
-    
     white-space: nowrap;      
 }
+
 .card h3 {
     color: #fff; 
     text-transform: uppercase;
@@ -170,11 +142,8 @@ section {
     margin: 0;
 }
 
-.card.hidden {
-    opacity: 0;
-    transform: translateY(30px);
-}
-
+/* Animações dos Cards */
+.card.hidden { opacity: 0; transform: translateY(30px); }
 .card.visible {
     opacity: 1;
     transform: translateY(0);
@@ -182,16 +151,18 @@ section {
     transition-delay: var(--delay); 
 }
 
+/* --- FORMULÁRIO --- */
 .form-box {
     width: 100%;
     max-width: 550px;
     background: rgba(10, 10, 10, 0.8); 
     backdrop-filter: blur(20px); 
     -webkit-backdrop-filter: blur(20px);
-    padding: 50px;
+    padding: 40px;
     border: 1px solid #222;
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     border-radius: var(--radius); 
+    box-sizing: border-box;
 }
 
 .form-group { margin-bottom: 25px; }
@@ -203,7 +174,6 @@ label {
     font-size: 0.75rem;
     font-weight: bold;
     margin-bottom: 10px;
-    letter-spacing: 1px;
 }
 
 input, select {
@@ -213,8 +183,9 @@ input, select {
     border: 1px solid #333;
     color: #fff;
     box-sizing: border-box;
-    transition: 0.3s;
     border-radius: 12px; 
+    /* IMPORTANTE: 16px evita o zoom automático no iPhone */
+    font-size: 16px; 
 }
 
 input:focus, select:focus {
@@ -225,7 +196,7 @@ input:focus, select:focus {
 
 button {
     width: 100%;
-    padding: 22px;
+    padding: 20px;
     background: transparent;
     color: var(--st-red);
     border: 2px solid var(--st-red);
@@ -233,9 +204,8 @@ button {
     text-transform: uppercase;
     cursor: pointer;
     letter-spacing: 2px;
-    transition: 0.4s;
-    margin-top: 10px;
     border-radius: 12px; 
+    transition: 0.4s;
 }
 
 button:hover {
@@ -244,23 +214,7 @@ button:hover {
     box-shadow: 0 0 30px var(--st-red);
 }
 
-
-@media (max-width: 1100px) {
-    .cards-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .cards-container {
-        grid-template-columns: 1fr;
-    }
-    .section-title { font-size: 1.5rem; }
-    .logo-image { max-width: 90%; }
-    .form-box { padding: 30px; width: 90%; }
-    .card { min-height: auto; padding: 40px 20px; }
-}
-
+/* --- MODAL --- */
 #modal {
     display: none;
     position: fixed;
@@ -269,18 +223,54 @@ button:hover {
     z-index: 10000;
     justify-content: center;
     align-items: center;
-    text-align: center;
     padding: 20px;
 }
+
 .modal-content {
     border: 1px solid var(--st-red);
-    padding: 40px;
+    padding: 30px;
     background: #000;
-    max-width: 500px;
+    width: 100%;
+    max-width: 450px;
     border-radius: var(--radius); 
+    text-align: center;
+    box-sizing: border-box;
 }
+
+.modal-content h2 { margin-top: 0; color: var(--st-red); }
+
 .modal-content button {
-    padding: 10px 30px;
+    padding: 12px 30px;
     width: auto;
     margin-top: 20px;
+}
+
+/* --- RESPONSIVIDADE --- */
+
+@media (max-width: 1100px) {
+    .cards-container { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    section { padding: 40px 15px; }
+    
+    .cards-container { grid-template-columns: 1fr; }
+    
+    .section-title { font-size: 1.5rem; letter-spacing: 3px; }
+    
+    .logo-image { max-width: 95%; }
+    
+    .form-box { 
+        padding: 25px; 
+        width: 100%; 
+        border-radius: 15px;
+    }
+
+    .modal-content {
+        padding: 25px 20px;
+        width: 95%;
+    }
+
+    .modal-content h2 { font-size: 1.4rem; }
+    .modal-content p { font-size: 0.9rem; }
 }
