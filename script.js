@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     cards.forEach(card => cardObserver.observe(card));
 
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyiWjzuLhjdLbC6Odhps_oD3pYBfpnFV04coXF8iHGWT6elz8y9XcABfs_1vLk-eva2/exec'; 
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwAUx5a7DRrcpNFfTKlPlF6hjqig79k0TItxpKRIQNT6Bdjfz_dm_ybZWqiW3E3yVsR/exec";
     const form = document.getElementById('inscricaoForm');
     const btn = document.getElementById('btnEnviar');
     const modal = document.getElementById('modal');
