@@ -93,13 +93,22 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius);
     padding: 40px 30px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Mantém a transição suave */
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
     overflow: hidden;
+}
+
+/* EFEITO HOVER - ADICIONE LOGO ABAIXO DO .card */
+@media (hover: hover) {
+    .card:hover {
+        transform: translateY(-10px) scale(1.02);
+        border-color: var(--st-red);
+        box-shadow: 0 0 20px var(--st-glow), inset 0 0 10px var(--st-glow);
+    }
 }
 
 .card-icon {
@@ -233,4 +242,14 @@ button {
     .logo-image { max-width: 90%; }
     .form-box { padding: 25px; width: 100%; }
     .modal-content { width: 95%; padding: 30px 15px; }
+}
+
+.card.visible {
+    animation: flash-border 1.5s ease-out;
+}
+
+@keyframes flash-border {
+    0% { border-color: rgba(255, 255, 255, 0.1); box-shadow: none; }
+    50% { border-color: var(--st-red); box-shadow: 0 0 15px var(--st-glow); }
+    100% { border-color: rgba(255, 255, 255, 0.1); box-shadow: none; }
 }
